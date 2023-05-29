@@ -27,3 +27,28 @@ class RentalSystem:
         else:
             print("Невірний вибір автомобіля.")
 
+rental_system = RentalSystem()
+
+car1 = Car("Економ клас", "Бензин", "Механіка", "Toyota Avensis", 1500)
+car2 = Car("Бізнес клас", "Дизель", "Автомат", "Mercedes GLS", 3000)
+car3 = Car("Середній клас", "Бензин", "Автомат", "Honda Civic ", 2200)
+
+rental_system.add_car(car1)
+rental_system.add_car(car2)
+rental_system.add_car(car3)
+
+while True:
+    print("\n===== Меню Оренди =====")
+    rental_system.display_available_cars()
+    print("0. Вихід")
+    choice = int(input("Виберіть авто: "))
+
+    if choice == 0:
+        print("Вихід з орендної системи...")
+        break
+
+    if choice > 0 and choice <= len(rental_system.cars):
+        num_days = int(input("Виберіть кількість днів оренди: "))
+        rental_system.rent_car(choice - 1, num_days)
+    else:
+        print("Невірний вибір. Будь ласка спробуйте ще раз.")
